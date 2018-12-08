@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct StudentLocationsData {
-    static var locations = [StudentLocation]()
+struct StudentInformationData {
+    static var locations = [StudentInformation]()
 }

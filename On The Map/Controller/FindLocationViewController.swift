@@ -32,13 +32,13 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         print("hsvc \(updateLocation)")
         spinner?.startAnimating()
         if updateLocation {
-            Client.putUserLocation(mapString: address, mediaURL: mediaURL, latitude: lat, longitude: lon, completion: { [weak self]
+            Client.putStudentInformation(mapString: address, mediaURL: mediaURL, latitude: lat, longitude: lon, completion: { [weak self]
                 (success,error)
                 in
                 self?.spinner?.stopAnimating()
                 if success
                 {
-                    StudentLocationsData.locations = [StudentLocation]()
+                    StudentInformationData.locations = [StudentInformation]()
                     self?.dismiss(animated: true,  completion: nil)
                 }
                 else{
@@ -47,13 +47,13 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
             })
         }
         else{
-            Client.postUserLocation(mapString: address, mediaURL: mediaURL, latitude: lat, longitude: lon, completion: { [weak self]
+            Client.postStudentInformation(mapString: address, mediaURL: mediaURL, latitude: lat, longitude: lon, completion: { [weak self]
                 (success,error)
                 in
                 self?.spinner?.stopAnimating()
                 if success
                 {
-                    StudentLocationsData.locations = [StudentLocation]()
+                    StudentInformationData.locations = [StudentInformation]()
                     self?.dismiss(animated: true,  completion: nil)
                 }
                 else{

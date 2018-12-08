@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		7A497E3721B7A6FF00A7CFC2 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A497E3621B7A6FF00A7CFC2 /* AlertController.swift */; };
 		7A497E3921B8A16A00A7CFC2 /* PUTStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A497E3821B8A16A00A7CFC2 /* PUTStudentLocationResponse.swift */; };
+		7A497E3B21BB5DB200A7CFC2 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A497E3A21BB5DB200A7CFC2 /* ErrorResponse.swift */; };
 		7A51D38221AD09420065B037 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38121AD09420065B037 /* Client.swift */; };
 		7A51D38421AD0EA00065B037 /* UdacityLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38321AD0EA00065B037 /* UdacityLoginRequest.swift */; };
 		7A51D38621AD12210065B037 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38521AD12210065B037 /* LoginResponse.swift */; };
 		7A51D38A21AD39BD0065B037 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38921AD39BD0065B037 /* UIViewController+Extension.swift */; };
 		7A51D38C21AD4BBD0065B037 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38B21AD4BBD0065B037 /* ViewController.swift */; };
 		7A51D38E21AD4CE90065B037 /* StudentLocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38D21AD4CE90065B037 /* StudentLocationData.swift */; };
-		7A51D39021AD4D2E0065B037 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38F21AD4D2E0065B037 /* StudentLocation.swift */; };
+		7A51D39021AD4D2E0065B037 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D38F21AD4D2E0065B037 /* StudentInformation.swift */; };
 		7A51D39221AD504A0065B037 /* StudentLocationsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A51D39121AD504A0065B037 /* StudentLocationsResult.swift */; };
 		7A90F26321B6020D00271ED7 /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90F26221B6020D00271ED7 /* UserDataResponse.swift */; };
 		7A90F26521B64D2800271ED7 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90F26421B64D2800271ED7 /* AddLocationViewController.swift */; };
@@ -35,13 +36,14 @@
 /* Begin PBXFileReference section */
 		7A497E3621B7A6FF00A7CFC2 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		7A497E3821B8A16A00A7CFC2 /* PUTStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PUTStudentLocationResponse.swift; sourceTree = "<group>"; };
+		7A497E3A21BB5DB200A7CFC2 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		7A51D38121AD09420065B037 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		7A51D38321AD0EA00065B037 /* UdacityLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityLoginRequest.swift; sourceTree = "<group>"; };
 		7A51D38521AD12210065B037 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		7A51D38921AD39BD0065B037 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7A51D38B21AD4BBD0065B037 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A51D38D21AD4CE90065B037 /* StudentLocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationData.swift; sourceTree = "<group>"; };
-		7A51D38F21AD4D2E0065B037 /* StudentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		7A51D38F21AD4D2E0065B037 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		7A51D39121AD504A0065B037 /* StudentLocationsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationsResult.swift; sourceTree = "<group>"; };
 		7A90F26221B6020D00271ED7 /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
 		7A90F26421B64D2800271ED7 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
@@ -111,10 +113,11 @@
 			children = (
 				7A90F26C21B6DD9200271ED7 /* PostStudentLocationResponse.swift */,
 				7A51D38521AD12210065B037 /* LoginResponse.swift */,
-				7A51D38F21AD4D2E0065B037 /* StudentLocation.swift */,
+				7A51D38F21AD4D2E0065B037 /* StudentInformation.swift */,
 				7A51D39121AD504A0065B037 /* StudentLocationsResult.swift */,
 				7A90F26221B6020D00271ED7 /* UserDataResponse.swift */,
 				7A497E3821B8A16A00A7CFC2 /* PUTStudentLocationResponse.swift */,
+				7A497E3A21BB5DB200A7CFC2 /* ErrorResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -254,11 +257,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A51D38E21AD4CE90065B037 /* StudentLocationData.swift in Sources */,
-				7A51D39021AD4D2E0065B037 /* StudentLocation.swift in Sources */,
+				7A51D39021AD4D2E0065B037 /* StudentInformation.swift in Sources */,
 				7A51D38A21AD39BD0065B037 /* UIViewController+Extension.swift in Sources */,
 				7A90F26721B68BAF00271ED7 /* FindLocationViewController.swift in Sources */,
 				7A90F26521B64D2800271ED7 /* AddLocationViewController.swift in Sources */,
 				7AA07BA321ABF68F006A59A0 /* StudentListViewController.swift in Sources */,
+				7A497E3B21BB5DB200A7CFC2 /* ErrorResponse.swift in Sources */,
 				7A90F26921B6BC4A00271ED7 /* SpinnerView.swift in Sources */,
 				7A90F26B21B6DA6E00271ED7 /* PostStudentLocation.swift in Sources */,
 				7A90F26321B6020D00271ED7 /* UserDataResponse.swift in Sources */,

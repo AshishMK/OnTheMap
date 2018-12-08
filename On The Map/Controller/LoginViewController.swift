@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         else{
             setLoggingIn(false)
-            AlertController.showAlert("Login Failed",message:  "Email or password is wrong")
+            AlertController.showAlert("Login Failed",message:  error?.localizedDescription ?? "Email or password is wrong")
         }
     }
     func  setLoggingIn(_ loggingIn: Bool){

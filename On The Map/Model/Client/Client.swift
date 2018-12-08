@@ -41,7 +41,7 @@ class Client {
             case .getSession:
                 return "https://onthemap-api.udacity.com/v1/session"
             case .studentLocations:
-                return Endpoints.baseURLParse + "?limit=50&order=-updatedAt"
+                return Endpoints.baseURLParse + "?limit=100&order=-updatedAt"
             case .studentLocation(let query):
                 return Endpoints.baseURLParse + "?where=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
             case .getUserData:
@@ -71,7 +71,7 @@ class Client {
         }
     }
     
-    class func postUserLocation(mapString: String, mediaURL: String, latitude: Double, longitude : Double,completion: @escaping (Bool, Error?) -> Void){
+    class func postStudentInformation(mapString: String, mediaURL: String, latitude: Double, longitude : Double,completion: @escaping (Bool, Error?) -> Void){
         let body =  PostStudentLocation(uniqueKey: Auth.registrationKey, firstName: Account.firstName, lastName: Account.lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
         
         taskForPOSTRequest(url: Endpoints.studentLocations.url, responseType: PostStudentLocationResponse.self, body: body, false){
@@ -88,7 +88,7 @@ class Client {
         }
     }
     
-    class func putUserLocation(mapString: String, mediaURL: String, latitude: Double, longitude : Double,completion: @escaping (Bool, Error?) -> Void){
+    class func putStudentInformation(mapString: String, mediaURL: String, latitude: Double, longitude : Double,completion: @escaping (Bool, Error?) -> Void){
        print("\(Endpoints.putLocation.stringValue)")
         let body =  PostStudentLocation(uniqueKey: Auth.registrationKey, firstName: Account.firstName, lastName: Account.lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
         
@@ -105,8 +105,8 @@ class Client {
     }
     
     
-    class func getStudentLocation(completion: @escaping (Bool, Error?,UIActivityIndicatorView) -> Void,spinner: UIActivityIndicatorView){
-      taskForGETRequest(url: Endpoints.studentLocation("{\"uniqueKey\":\"\(Auth.registrationKey)\"}").url, responseType: StudentLocationsResult.self, false){
+    class func getStudentInformation(completion: @escaping (Bool, Error?,UIActivityIndicatorView) -> Void,spinner: UIActivityIndicatorView){
+      taskForGETRequest(url: Endpoints.studentLocation("{\"uniqueKey\":\"\(Auth.registrationKey)\"}").url, responseType: StudentInformationResult.self, false){
             (response,error)
             in
             if let response = response {
@@ -129,6 +129,7 @@ class Client {
         taskForPOSTRequest(url: Endpoints.getSession.url, responseType: LoginResponse.self, body: body, true){
             (response, error)
             in
+            
             if let response = response {
                 Auth.sessionId = response.session.sessionId
                 Auth.registrationKey = response.account.registrationKey
@@ -141,8 +142,8 @@ class Client {
         }
     }
     
-    class func getStudentLocations(completion: @escaping ([StudentLocation],Error?) -> Void){
-        taskForGETRequest(url: Endpoints.studentLocations.url, responseType: StudentLocationsResult.self,false, completion: {
+    class func getStudentsInformation(completion: @escaping ([StudentInformation],Error?) -> Void){
+        taskForGETRequest(url: Endpoints.studentLocations.url, responseType: StudentInformationResult.self,false, completion: {
             (response, error)
             in
             if let response = response {
@@ -182,8 +183,16 @@ class Client {
                     completion(responseObject, nil)
                 }
             } catch {
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do{
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil,errorResponse)
+                    }
+                }
+                catch{
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
             }
         }
@@ -212,6 +221,7 @@ class Client {
                 }
                 return
             }
+            
             let decoder = JSONDecoder()
             do{
                 if isUdacityApi {
@@ -225,10 +235,17 @@ class Client {
                 }
             }catch{
                 
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do{
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil,errorResponse)
+                    }
                 }
-                
+                catch{
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
             }
         }
         task.resume()
@@ -263,8 +280,16 @@ class Client {
                 }
             }catch{
                 
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do{
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil,errorResponse)
+                    }
+                }
+                catch{
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
                 
             }
@@ -303,7 +328,7 @@ class Client {
             Account.latitude = 0
             Account.mapString = ""
             Account.objectID = ""
-            StudentLocationsData.locations = []
+            StudentInformationData.locations = []
             DispatchQueue.main.async {
                 completionHandler(true,nil,spinner)
             }

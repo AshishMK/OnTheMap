@@ -15,31 +15,37 @@ class StudentListViewController: ViewController, UITableViewDataSource, UITableV
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StudentLocationsData.locations.count
+        return StudentInformationData.locations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentableViewCell")!
-        let studentLocation = StudentLocationsData.locations[indexPath.row]
+        let studentLocation = StudentInformationData.locations[indexPath.row]
         cell.textLabel?.text = studentLocation.firstName + " " + studentLocation.lastName
         cell.detailTextLabel?.text = studentLocation.mediaURL
         return cell
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let app = UIApplication.shared
+       
+            app.open(URL(string: StudentInformationData.locations[indexPath.row].mediaURL)! ,options: [:], completionHandler: nil)
         
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
     }
     
-    func handleStudentLocationResponse(){
-        self.tableView.reloadData()
-    }
-   
-    
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            // Do any additional setup after loading the view.
+        }
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            tableView.reloadData()
+        }
+        
+        func handleStudentLocationResponse(){
+            self.tableView.reloadData()
+        }
+        
+        
 }

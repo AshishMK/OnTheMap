@@ -16,16 +16,19 @@ class ViewController: UIViewController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        if StudentLocationsData.locations.count == 0  {
+        if StudentInformationData.locations.count == 0  {
            spinner?.startAnimating()
-            Client.getStudentLocations(completion: self.getResponseHandler(locations: error :))
+            Client.getStudentsInformation(completion: self.getResponseHandler(locations: error :))
         }
     }
     
-    func getResponseHandler(locations: [StudentLocation],error: Error?){
+    func getResponseHandler(locations: [StudentInformation],error: Error?){
         //Hide
             spinner?.stopAnimating()
-         StudentLocationsData.locations = locations
+        if let error = error {
+            AlertController.showAlert("Can't find locations", message: error.localizedDescription )
+        }
+         StudentInformationData.locations = locations
         if let topController = UIApplication.topViewController() {
             
                 if topController is StudentListViewController {
@@ -36,9 +39,7 @@ class ViewController: UIViewController {
                 }
             
         }
-        if let error = error {
-              AlertController.showAlert("Can't find locations", message: error.localizedDescription )
-        }
+        
     }
    
     

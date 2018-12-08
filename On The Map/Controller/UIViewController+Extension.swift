@@ -30,7 +30,7 @@ extension UIViewController  {
     @IBAction func addStudentTapped(_ sender: UIBarButtonItem) {
         let spinner = SpinnerView.showLoader(view: view)
         spinner.startAnimating()
-        Client.getStudentLocation(completion: handleUserLocation(success: error:spinner_:), spinner: spinner)
+        Client.getStudentInformation(completion: handleUserLocation(success: error:spinner_:), spinner: spinner)
         
     }
     

@@ -19,7 +19,7 @@ class MapViewController: ViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if StudentLocationsData.locations.count > 0 {
+        if StudentInformationData.locations.count > 0 {
             addMapAnnotations()
         }
     }
@@ -32,7 +32,7 @@ class MapViewController: ViewController, MKMapViewDelegate {
         self.mapView.removeAnnotations(self.mapView.annotations)
         // The "locations" array is an array of location objects that are similar to the JSON
         // data that you can download from parse.
-        let locations = StudentLocationsData.locations
+        let locations = StudentInformationData.locations
         
         // We will create an MKPointAnnotation for each location in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.
@@ -100,11 +100,11 @@ class MapViewController: ViewController, MKMapViewDelegate {
     // This delegate method is implemented to respond to taps. It opens the system browser
     // to the URL specified in the annotationViews subtitle property.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
+        //if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
                 app.open(URL(string: toOpen)! ,options: [:], completionHandler: nil)
-            }
+          //  }
         }
     }
 }
